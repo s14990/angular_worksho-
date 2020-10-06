@@ -1,0 +1,26 @@
+<table class="table">
+    <thead>
+        <tr>
+            <th *ngFor="let col of cols" > 
+                {{ col.header || col.key|uppercase}}
+            </th>
+        </tr>  
+    </thead>
+    <tbody>
+        <tr *ngFor="let item of data">
+            <td *ngFor="let col of cols" > 
+                <div [ngSwitch]="col.type">
+                    <div *ngSwitchCase="'input'">
+                        <input class='form-control' type='text' [value]='item[col.key]'> </div>
+                    <div *ngSwitchCase="'img'">
+                        <img [src]="item[col.key]" alt="item[col.type]" width="200">
+                    </div>
+                    <div *ngSwitchCase="'button'">
+                        <button class='btn btn-primary' (click)='action(col.header, item.id)'>{{col.header}}</button>
+                    </div>
+                    <div *ngSwitchDefault>{{item[col.key]}}</div>
+                </div>
+            </td>
+        </tr>
+    </tbody>
+</table>

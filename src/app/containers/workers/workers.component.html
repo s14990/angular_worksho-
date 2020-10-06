@@ -1,0 +1,7 @@
+<div class="col-3">
+    <app-search></app-search>
+</div>
+<div class="col-9">
+    <app-data-grid [data]='data' [cols]='cols' (actionEvent)="dgAction($event)">
+    </app-data-grid>
+</div>
